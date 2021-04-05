@@ -78,7 +78,6 @@ export function SoundsProvider({children}){
         songSelectHandler(currentSong);
         {audioRef && audioRef.current.play()}
     }, [currentSong])
-
     return(
         <soundsContext.Provider 
         value={{
