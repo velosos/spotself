@@ -46,7 +46,7 @@ export function SoundsProvider({children}){
 
     }
 
-    const songSelectHandler = (song) => {
+    const songSelectHandler =  (song) => {
         const newSongs = songs.map((songMap) =>{
             if (songMap.id === song.id){
                 return{
@@ -84,8 +84,8 @@ export function SoundsProvider({children}){
 
     useEffect(() => {
         songSelectHandler(currentSong);
-        {audioRef && audioRef.current.play()}
-    }, [currentSong])
+        audioRef && audioRef.current.play()
+    }, [currentSong, audioRef]) // eslint-disable-line react-hooks/exhaustive-deps
     return(
         <soundsContext.Provider 
         value={{
