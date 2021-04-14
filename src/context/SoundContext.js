@@ -38,6 +38,13 @@ export function SoundsProvider({children}){
         setSongInfo({...songInfo, currentTime: e.target.value})
 
     }
+
+    const songEndHandler = async () => {
+        let currentIndex = songs.findIndex((song) => song.id === currentSong.id);
+        await setCurrentSong(songs[(currentIndex + 1) % songs.length])
+
+    }
+
     const songSelectHandler = (song) => {
         const newSongs = songs.map((songMap) =>{
             if (songMap.id === song.id){
@@ -94,7 +101,8 @@ export function SoundsProvider({children}){
             dragHandler,
             songSelectHandler,
             setLibraryStatus,
-            skipTrackHandler}}>
+            skipTrackHandler,
+            songEndHandler}}>
             {children}
         </soundsContext.Provider>
     )

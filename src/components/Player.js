@@ -19,22 +19,23 @@ import {
             getTime,
             dragHandler,
             skipTrackHandler,
+            songEndHandler
             } = useContext(soundsContext)
     const audioRef = useRef(null)
 
     useEffect(() => {
         setAudioRef(audioRef)
-    },[])
+    })
     return (
         <div className="player">
             <div className="time-control">
                 <p>{getTime(songInfo.currentTime)}</p>
-                <input 
-                    min={0} 
-                    max={songInfo.duration} 
-                    value={songInfo.currentTime}
-                    onChange={dragHandler} 
-                    type='range'/>
+                    <input 
+                        min={0} 
+                        max={songInfo.duration} 
+                        value={songInfo.currentTime}
+                        onChange={dragHandler} 
+                        type='range'/>
                     <p>{getTime(songInfo.duration || 0)}</p>
                 </div>
             <div className="play-control">
@@ -58,7 +59,8 @@ import {
                 onTimeUpdate={timeUpdateHandler}
                 onLoadedMetadata={timeUpdateHandler}  
                 ref={audioRef} 
-                src={currentSong.audio}>
+                src={currentSong.audio}
+                onEnded={songEndHandler}>
             </audio>
         </div>
     )
