@@ -13,6 +13,7 @@ export function SoundsProvider({children}){
         currentTime:0,
         duration:0,
     })
+    const songTime = songInfo.currentTime > 0;
 
     const playSongHandle = () => {
         if(isPlaying){
@@ -79,7 +80,7 @@ export function SoundsProvider({children}){
     }
     useEffect(() => {
         setIsPlaying(true)
-    }, [songInfo.currentTime > 0])
+    }, [songTime])
 
     useEffect(() => {
         songSelectHandler(currentSong);
