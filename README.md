@@ -1,3 +1,2 @@
-Music player built with React.JS, contextAPI and Sass
+Music player built with React.JS
 
-https://spotself.netlify.app/
